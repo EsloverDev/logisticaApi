@@ -5,7 +5,7 @@ const respuesta = require('../src/util/respuesta');
 const router = express.Router();
 
 // Aquí creamos la configuración para el verbo get que tiene como parámetros una ruta ('/user/login'), y una función callback que a su vez tiene como parámetros un request y un response. Esta función se encarga de validar si un usuario existe para posteriormente permitirle el acceso a la app.
-router.get('/user/login', (req, res) => {
+router.post('/user/login', (req, res) => {
     if(req.body.user == 'edwin@mail.com' && req.body.pass == '1234'){
         respuesta.success(req, res);
     }
