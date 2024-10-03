@@ -17,4 +17,8 @@ router.post('/user/create', (req, res) => {
     respuesta.success(req, res, 200, 'Usuario creado');
 })
 
+router.post('/user/contact', (req, res) => {
+    respuesta.success(req, res, 200, 'Mensaje enviado');
+})
+
 module.exports = router;
