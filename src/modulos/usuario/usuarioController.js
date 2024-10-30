@@ -6,6 +6,11 @@ function listarTodos(){
     return db.getAll(entidad);
 }
 
+function listarUno(id){
+    return db.getId(entidad, id);
+}
+
 module.exports = {
-    listarTodos
+    listarTodos,
+    listarUno
 }

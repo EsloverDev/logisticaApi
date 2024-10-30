@@ -29,4 +29,11 @@ router.get('/user/list', (req, res) => {
     })
 })
 
+router.get('/user/:id', (req, res) => {
+    const id = req.params.id;
+    const getUser = controller.listarUno(id).then((items) => {
+        respuesta.success(req, res, 200, items);
+    })
+})
+
 module.exports = router;
