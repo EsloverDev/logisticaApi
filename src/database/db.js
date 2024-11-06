@@ -37,6 +37,7 @@ function getAll(entidad){
             if(error){
                 return reject(error);
             }
+            console.log(result);
             return resolve(result);
         })
     });
@@ -46,6 +47,19 @@ function getId(entidad, id){
     return new Promise((resolve, reject) => {
         connection.query(`SELECT * FROM ${entidad} WHERE Id = ${id}`, (error, result) => {
             if(error){
+                return reject(error);
+            }
+            return resolve(result)
+        })
+    });
+}
+
+function loginValidation(entidad, user, pass){
+    return new Promise((resolve, reject) => {
+        console.log(`SELECT * FROM ${entidad} WHERE Usuario = '${user}' AND Clave = '${pass}';`)
+        connection.query(`SELECT * FROM ${entidad} WHERE Usuario = '${user}' AND Clave = '${pass}';`, (error, result) => {
+        console.log();
+            if(error != null){
                 return reject(error);
             }
             return resolve(result)
@@ -70,5 +84,6 @@ module.exports = {
     getId,
     add,
     update,
-    state
+    state,
+    loginValidation
 }
