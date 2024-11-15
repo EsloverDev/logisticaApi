@@ -21,11 +21,19 @@ router.post('/user/login', (req, res) => {
 
 // método para crear un usuario; en este caso usamos el verbo post y cambiamos la ruta ('/user/create')
 router.post('/user/create', (req, res) => {
-    respuesta.success(req, res, 200, 'Usuario creado');
+        respuesta.success(req, res, 200, 'Usuario creado');
 })
 
 router.post('/user/contact', (req, res) => {
+    console.log(req.body);
+    const nombre = req.body.nombre;
+    const correo = req.body.email;
+    const ciudad = req.body.ciudad;
+    const telefono = req.body.telefono;
+    const mensaje = req.body.mensaje;
+    const toContact = controller.contactar(nombre, correo, ciudad, telefono, mensaje).then(result => {
     respuesta.success(req, res, 200, 'Mensaje enviado');
+    })
 })
 
 router.get('/user/list', (req, res) => {

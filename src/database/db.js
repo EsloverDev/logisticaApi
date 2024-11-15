@@ -67,6 +67,18 @@ function loginValidation(entidad, user, pass){
     });
 }
 
+function contact(entidad, nombre, correo, ciudad, telefono, mensaje){
+    return new Promise((resolve, reject) => {
+        connection.query(`INSERT INTO ${entidad} (nombre, correo, ciudad, telefono, mensaje) VALUES ('${nombre}', '${correo}', '${ciudad}', '${telefono}', '${mensaje}')`, (error, result) => {
+            if(error){
+                return reject(error);
+            }
+            return resolve(result);
+        })
+        console.log(`INSERT INTO ${entidad} (nombre, correo, ciudad, telefono, mensaje) VALUES ('${nombre}', '${correo}', '${ciudad}', '${telefono}', '${mensaje}')`)
+    })
+}
+
 function add(entidad, datos){
 
 }
@@ -85,5 +97,6 @@ module.exports = {
     add,
     update,
     state,
-    loginValidation
+    loginValidation,
+    contact
 }
